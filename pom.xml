@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.softteco</groupId>
+    <artifactId>outbox-pattern-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>outbox-pattern-demo</name>
+    <description>Outbox pattern microservices demo</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+        
+        <!-- Dependency Versions -->
+        <flyway.version>11.17.0</flyway.version>
+        <hibernate-types.version>2.21.0</hibernate-types.version>
+        <springdoc-openapi.version>2.7.0</springdoc-openapi.version>
+        <loki-logback-appender.version>1.6.0</loki-logback-appender.version>
+    </properties>
+    <modules>
+        <module>outbox-commons</module>
+        <module>order-service</module>
+        <module>billing-service</module>
+        <module>stock-service</module>
+    </modules>
+
+</project>

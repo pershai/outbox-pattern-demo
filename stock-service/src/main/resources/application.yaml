@@ -1,0 +1,69 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: ${STOCKSERVICE_DB_URL:jdbc:postgresql://localhost:5434/stock}
+    username: ${STOCKSERVICE_DB_USER:stock}
+    password: ${STOCKSERVICE_DB_PASSWORD:stock}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: stock-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: com.softteco.stockservice.contracts.OrderCreatedEvent
+        spring.json.trusted.packages: "*"
+        spring.json.add.type.headers: false
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+app:
+  kafka:
+    topics:
+      orders-created: orders.created.v1
+      stock-reserved: stock.reserved.v1
+      payment-processed: payment.processed.v1
+  outbox:
+    relay-interval: PT2S
+  retry:
+    backoff:
+      initial-interval: 500
+      multiplier: 2.0
+      max-interval: 10000
+    max-attempts: 5
+
+logging:
+  level:
+    com.softteco.stockservice: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

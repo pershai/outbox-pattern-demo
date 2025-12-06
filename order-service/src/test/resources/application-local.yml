@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orders
+    username: postgres
+    password: password
+  kafka:
+    bootstrap-servers: localhost:9092
+    
+logging:
+  level:
+    com.softteco: DEBUG

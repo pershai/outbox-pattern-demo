@@ -1,0 +1,63 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: ${BILLINGSERVICE_DB_URL:jdbc:postgresql://localhost:5433/billing}
+    username: ${BILLINGSERVICE_DB_USER:billing}
+    password: ${BILLINGSERVICE_DB_PASSWORD:billing}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: billing-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: com.softteco.billingservice.contracts.StockReservedEvent
+        spring.json.trusted.packages: "*"
+        spring.json.add.type.headers: false
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+app:
+  kafka:
+    topics:
+      stock-reserved: stock.reserved.v1
+      payment-processed: payment.processed.v1
+
+logging:
+  level:
+    com.softteco.billingservice: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+

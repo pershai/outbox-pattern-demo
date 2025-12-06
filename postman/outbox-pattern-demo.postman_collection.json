@@ -1,0 +1,448 @@
+{
+  "info": {
+    "name": "Outbox Pattern Demo",
+    "_postman_id": "f2b1aa45-1e47-4598-9e7f-8a97464bd123",
+    "description": "Sample requests for the order, stock, and billing services with Actuator and Swagger endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Order Service",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerEmail\": \"demo@example.com\",\n  \"amount\": 42.50,\n  \"productSku\": \"PIZZA-MARG\",\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{order_base_url}}/api/v1/orders",
+              "host": [
+                "{{order_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{order_base_url}}/actuator/health",
+              "host": [
+                "{{order_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{order_base_url}}/actuator/metrics",
+              "host": [
+                "{{order_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "metrics"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Prometheus Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{order_base_url}}/actuator/prometheus",
+              "host": [
+                "{{order_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "prometheus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Swagger UI",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{order_base_url}}/swagger-ui.html",
+              "host": [
+                "{{order_base_url}}"
+              ],
+              "path": [
+                "swagger-ui.html"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OpenAPI Docs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{order_base_url}}/api-docs",
+              "host": [
+                "{{order_base_url}}"
+              ],
+              "path": [
+                "api-docs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Stock Service",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/api/v1/stock/products",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stock",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Reservations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/api/v1/stock/reservations",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stock",
+                "reservations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/actuator/health",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/actuator/metrics",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "metrics"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Prometheus Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/actuator/prometheus",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "prometheus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Swagger UI",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/swagger-ui.html",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "swagger-ui.html"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OpenAPI Docs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{stock_base_url}}/api-docs",
+              "host": [
+                "{{stock_base_url}}"
+              ],
+              "path": [
+                "api-docs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Billing Service",
+      "item": [
+        {
+          "name": "Create Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"amount\": 42.50\n}"
+            },
+            "url": {
+              "raw": "{{billing_base_url}}/api/v1/payments",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/api/v1/payments/1",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "payments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List All Payments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/api/v1/payments",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refund Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paymentId\": 1,\n  \"amount\": 42.50\n}"
+            },
+            "url": {
+              "raw": "{{billing_base_url}}/api/v1/payments/refunds",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "payments",
+                "refunds"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/actuator/health",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/actuator/metrics",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "metrics"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Prometheus Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/actuator/prometheus",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "actuator",
+                "prometheus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Swagger UI",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/swagger-ui.html",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "swagger-ui.html"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OpenAPI Docs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{billing_base_url}}/api-docs",
+              "host": [
+                "{{billing_base_url}}"
+              ],
+              "path": [
+                "api-docs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "order_base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "stock_base_url",
+      "value": "http://localhost:8082"
+    },
+    {
+      "key": "billing_base_url",
+      "value": "http://localhost:8081"
+    }
+  ]
+}
