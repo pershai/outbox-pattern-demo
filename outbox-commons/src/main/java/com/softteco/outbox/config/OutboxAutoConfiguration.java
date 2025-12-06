@@ -1,6 +1,7 @@
 package com.softteco.outbox.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,6 +26,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         "com.softteco.outbox.cleanup"
 })
 @EnableJpaRepositories(basePackages = "com.softteco.outbox.repository")
+@EntityScan(basePackages = "com.softteco.outbox.entity")
 @RequiredArgsConstructor
 public class OutboxAutoConfiguration {
 

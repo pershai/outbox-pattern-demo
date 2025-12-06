@@ -36,6 +36,11 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+      - name: Install parent POM
+        run: mvn -N install
+
+
+
       - name: Build outbox-commons
         run: mvn clean install -pl outbox-commons -DskipTests
 
@@ -94,6 +99,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
+
+      - name: Install parent POM
+        run: mvn -N install
 
       - name: Build outbox-commons
         run: mvn clean install -pl outbox-commons -DskipTests
