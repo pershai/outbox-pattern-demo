@@ -34,7 +34,7 @@
         <flyway.version>11.17.0</flyway.version>
         <hibernate-types.version>2.21.0</hibernate-types.version>
         <springdoc-openapi.version>2.7.0</springdoc-openapi.version>
-        <loki-logback-appender.version>1.6.0</loki-logback-appender.version>
+        <loki-logback-appender.version>2.0.3</loki-logback-appender.version>
     </properties>
     <modules>
         <module>outbox-commons</module>
